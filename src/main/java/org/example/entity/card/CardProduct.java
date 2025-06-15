@@ -4,7 +4,6 @@ import org.example.entity.BankProduct;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Currency;
 
 import static org.example.entity.ExceptName.WITHDRAW_UNAVAILABLE;
 
@@ -17,13 +16,13 @@ public abstract class CardProduct extends BankProduct implements Card {
 
     @Override
     public void deposit(BigDecimal amount) {
-        amount = checkAmount(amount);
+        amount = validateAmount(amount);
         this.balance = this.balance.add(amount);
     }
 
     @Override
     public void withdraw(BigDecimal amount) {
-        amount = checkAmount(amount);
+        amount = validateAmount(amount);
         checkWithdrawAvailable(amount);
 
         balance = balance.subtract(amount);

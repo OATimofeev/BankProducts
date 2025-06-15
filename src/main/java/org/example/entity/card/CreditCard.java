@@ -21,7 +21,7 @@ public class CreditCard extends CardProduct {
     }
 
     public void deposit(BigDecimal amount) {
-        checkAmount(amount);
+        validateAmount(amount);
         // Если долг больше депозита - уменьшаем только долг, иначе - долг = 0, а разница - в балансе
         if (amount.compareTo(debt) <= 0) {
             debt = debt.subtract(amount).setScale(2, RoundingMode.HALF_UP);
@@ -33,7 +33,7 @@ public class CreditCard extends CardProduct {
 
     @Override
     public void withdraw(BigDecimal amount) {
-        checkAmount(amount);
+        validateAmount(amount);
 
         balance = balance.subtract(amount);
         // Если баланс - отрицательный, то balance = 0, а разница уходит в задолженность

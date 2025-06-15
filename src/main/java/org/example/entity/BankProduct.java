@@ -7,7 +7,8 @@ import java.math.RoundingMode;
 import java.util.Currency;
 import java.util.Objects;
 
-import static org.example.entity.ExceptName.*;
+import static org.example.entity.ExceptName.INVALID_AMOUNT;
+import static org.example.entity.ExceptName.INVALID_BALANCE;
 
 @Data
 public abstract class BankProduct {
@@ -24,7 +25,7 @@ public abstract class BankProduct {
 
     public abstract void deposit(BigDecimal amount);
 
-    protected BigDecimal checkAmount(BigDecimal amount) {
+    protected BigDecimal validateAmount(BigDecimal amount) {
         Objects.requireNonNull(amount);
         amount = amount.setScale(2, RoundingMode.HALF_UP);
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {

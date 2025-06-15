@@ -77,7 +77,8 @@ public class DebitCardTests {
         return Stream.of(
                 Arguments.of((Double) null),
                 Arguments.of(-1.2),
-                Arguments.of(0.0)
+                Arguments.of(0.0),
+                Arguments.of(0.001)
         );
     }
 
